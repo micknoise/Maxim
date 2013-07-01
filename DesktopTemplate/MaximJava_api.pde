@@ -358,15 +358,24 @@ public class AudioPlayer implements Synth, AudioGenerator {
 	    short sample;
 	    readHead += dReadHead;
 	    if (readHead > (audioData.length - 1)) {// got to the end
-		//% (float)audioData.length;
-		if (isLooping) {// back to the start for loop mode
-		    readHead = readHead % (float)audioData.length;
-		}
-		else {
-		    readHead = 0;
-		    isPlaying = false;
-		}
-	    }
+			//% (float)audioData.length;
+			if (isLooping) {// back to the start for loop mode
+			    readHead = readHead % (float)audioData.length;
+			}
+			else {
+			    readHead = 0;
+			    isPlaying = false;
+			}
+	    } else if (readHead < 0) {// got to the beginning
+        	//% (float)audioData.length;
+        	if (isLooping) {// back to the end for loop mode
+          		readHead = audioData.length + (readHead % (float)audioData.length);
+        	}
+        	else {
+          		readHead = audioData.length - 1;
+          		isPlaying = false;
+        	}
+      	}
 
 	    // linear interpolation here
 	    // declaring these at the top...
