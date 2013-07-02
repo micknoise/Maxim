@@ -147,7 +147,7 @@ function Maxim(t) {
 
     audio.stop = function() {
       if (source) {
-        source.noteOff(0);
+        source.stop(0);
         playing=false;
       }
     }
