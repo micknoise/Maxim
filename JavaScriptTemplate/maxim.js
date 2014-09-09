@@ -44,7 +44,11 @@ function Maxim(t) {
         myAudioBuffer = buffer;
         //       alert("sound decoded"); //test
         source = context.createBufferSource();
-        gainNode = context.createGainNode();
+        
+        //createGainNode method is deprecated :(
+        //gainNode = context.createGainNode();
+        gainNode = context.createGainNode ? context.createGainNode() : context.createGain();
+        
         filter = context.createBiquadFilter();
         analyser = context.createAnalyser();
         filter.type = 0;
