@@ -44,7 +44,7 @@ function Maxim(t) {
         myAudioBuffer = buffer;
         //       alert("sound decoded"); //test
         source = context.createBufferSource();
-        gainNode = context.createGainNode();
+        gainNode = context.createGain();
         filter = context.createBiquadFilter();
         analyser = context.createAnalyser();
         filter.type = 0;
@@ -109,7 +109,7 @@ function Maxim(t) {
     audio.play = function() {
       if (source && !playing) {
         source = context.createBufferSource();
-        gainNode = context.createGainNode()
+        gainNode = context.createGain()
           filter = context.createBiquadFilter();
         filter.type = 0;
         filter.frequency.value = 20000;
@@ -125,7 +125,7 @@ function Maxim(t) {
         if (isLooping) source.loop = true;
         //          source.loopStart = startTime/1000;
         //          source.loopEnd = source.buffer.duration;
-        source.noteGrainOn(0, startTime, source.buffer.duration-startTime);
+        source.start(0, startTime, source.buffer.duration-startTime);
         playing=true;
       }
       if (analysing==true && playing) {
@@ -137,7 +137,7 @@ function Maxim(t) {
 
     audio.stop = function() {
       if (source) {
-        source.noteOff(0);
+        source.stop(0);
         playing=false;
       }
     }
@@ -211,17 +211,17 @@ Synth = function() {
   var that = this;
   this.phase = 0;
   this.context = context;
-  this.node = context.createJavaScriptNode(512, 2, 2);
+  this.node = context.createScriptProcessor(512, 2, 2);
   this.node.onaudioprocess = function(audioContext) { 
     that.process(audioContext)
     };
     this.sample_rate = 44100;
   this.frequency = 220;
   this.amplitude = 1.0;
-  this.gainNode = context.createGainNode();
-  this.delayGain = context.createGainNode();
+  this.gainNode = context.createGain();
+  this.delayGain = context.createGain();
   this.filter = context.createBiquadFilter();
-  this.delay = context.createDelayNode(2);
+  this.delay = context.createDelay(2);
   this.delayAmt = 0.75;
   this.delayGain.gain.value = 0.75;
   this.filter.type = 0;
