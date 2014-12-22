@@ -53,7 +53,7 @@ function Maxim(t) {
         gainNode = context.createGainNode();
         filter = context.createBiquadFilter();
         analyser = context.createAnalyser();
-        filter.type = 0;
+        filter.type = "lowpass";
         filter.frequency.value = 20000;
         envTime = 1.0;
         source.buffer = myAudioBuffer;
@@ -78,7 +78,7 @@ function Maxim(t) {
           gainNode = context.createGainNode();
           filter = context.createBiquadFilter();
           analyser = context.createAnalyser();
-          filter.type = 0;
+          filter.type = "lowpass";
           filter.frequency.value = 20000;
           envTime = 1.0;
           source.buffer = myAudioBuffer;
@@ -142,7 +142,7 @@ function Maxim(t) {
         source = context.createBufferSource();
         gainNode = context.createGainNode()
           filter = context.createBiquadFilter();
-        filter.type = 0;
+        filter.type = "lowpass";
         filter.frequency.value = 20000;
         envTime = 1.0;
         source.buffer = myAudioBuffer;
@@ -266,7 +266,7 @@ Synth = function() {
   this.delay = context.createDelayNode(2);
   this.delayAmt = 0.75;
   this.delayGain.gain.value = 0.75;
-  this.filter.type = 0;
+  this.filter.type = "lowpass";
   this.envTime = 1.0;
   this.isPlaying = false;
   this.waveFormSize = 514;
