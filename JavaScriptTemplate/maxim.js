@@ -122,10 +122,17 @@ function Maxim(t) {
         gainNode.connect(context.destination);
         gainNode.gain.value = volume;
         //          alert("source connected"); //test
-        if (isLooping) source.loop = true;
-        //          source.loopStart = startTime/1000;
-        //          source.loopEnd = source.buffer.duration;
-        source.start(0, startTime, source.buffer.duration-startTime);
+        if (isLooping){
+          source.loop = true;
+          source.start(0, startTime);
+              //source.loopStart = startTime/1000;
+              //source.loopEnd = source.buffer.duration;
+
+        } else{
+           source.start(0, startTime, source.buffer.duration-startTime);
+        }
+
+       
         playing=true;
       }
       if (analysing==true && playing) {
