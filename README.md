@@ -1,6 +1,10 @@
 Maxim
 =====
 
+OK so this was a quickly hacked together thing we did for a MOOC in 2014. I really don't think you want to use this anymore but I'll leave it here for posterity.
+
+------------------
+
 Cross Platform JavaScript/Java Audio DSP and Mobile Web Development Library Compatible with Processing 
 
 Maxim is designed to make it easier to program cross platform audio for desktops amd mobile platforms.
