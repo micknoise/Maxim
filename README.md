@@ -1,7 +1,7 @@
 Maxim
 =====
 
-OK so this was a quickly hacked together thing we did for a MOOC in 2014. I really don't think you want to use this anymore but I'll leave it here for posterity.
+OK so this was a quickly hacked together thing we did for a MOOC in 2013. I really don't think you want to use this anymore but I'll leave it here for posterity.
 
 ------------------
 
