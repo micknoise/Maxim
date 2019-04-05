@@ -72,8 +72,9 @@ function Maxim(t) {
     }
 
     audio.cue = function(time) {
-
-	audio.stop();
+      if (audio.isPlaying()) {
+      	audio.stop();
+      }
       startTime=time/1000;
     }
 
